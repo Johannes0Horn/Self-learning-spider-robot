@@ -76,13 +76,13 @@ In a second experiment, the Gym Environment, which was successfully used for Sof
 The same model architecture as in Experiment 1 was used, but with 21 neurons in the input layer (18 motor positions and x, y, and z rotation of the robot) and 12 neurons in the output layer. 
 Continuous compressed action space and combined reward function gave better result than Experiment 1, but parameter-exploring policy gradients seems inferior to soft actor critical networks. No significant change could be observed by changing the learning rate and population size:
 
-<img align="left" width="300" src="es2.gif">
+<img align="center" width="300" src="es2.gif">
 
 ## Application to the real robot
 
 The simulation seems to represent the real robot well. The real walking pattern looks quite similar to the simulation. Although noise was used in the motor actions in the simulation, it is important to use a rough surface so that the robot has enough grip.
 By default, the simulation was called ~24 times for each step(), simulating ~0.1 seconds. However, the hardware setup only allows to execute a step two maximum times per second. A noticeably better result for the real robot could be achieved by training in a simulation with 240 steps, i.e. one second instead of 0.1 seconds per action. 
-The network outputs in the simulation were stored in csv files and smoothed if the step frequency of the simulation was greater than that of the real model. The network outputs were then converted to angles and sent to the real robot serially
+The network outputs in the simulation were stored in csv files and smoothed if the step frequency of the simulation was greater than that of the real model. The network outputs were then converted to angles and sent to the real robot serially.
 
 The walking Robot  |   The walking Robot
 :-------------------------:|:-------------------------:

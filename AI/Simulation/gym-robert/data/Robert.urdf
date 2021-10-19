@@ -1,0 +1,512 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Robert">
+	<material name="blue">
+		<color rgba="0.8 0 0.8 1"/>
+	</material>
+
+  
+    <!--Base-->
+        <!--Actual weight is 0.059kg added 100g per base plate-->
+        <link name="base_bottom">
+            <visual>
+                <geometry>
+                    <mesh filename="robert_base.stl" />
+                </geometry>
+                <material name="blue"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="robert_base.stl" />
+                </geometry>
+            </collision>
+            <inertial>
+              <mass value="0.159"/>
+              <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+        
+        <link name="base_top">
+            <visual>
+                <geometry>
+                    <mesh filename="robert_base.stl" />
+                </geometry>
+                <material name="blue"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="robert_base.stl" />
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="0.159"/>
+                <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+        <joint name="base_bottom_to_top" type="fixed">
+            <parent link="base_bottom"/>
+            <child link="base_top"/>
+            <origin xyz="0 0 0.058"/>
+        </joint>
+        
+    <!--Right first leg A-->
+        <link name = "right_first_leg_A">
+            <visual>
+                <geometry>
+                    <mesh filename="robert_right_leg_a.stl" />
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="robert_right_leg_a.stl" />
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0.02 0"/>
+            </collision>
+            <inertial>
+                <mass value="0.12"/>
+                <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+        <joint name="right_first_leg_Base_to_A" type="revolute">
+            <axis xyz="0 0 1"/>
+            <limit effort="1000.0" velocity="1.0" lower="-1.57" upper="1.57" />
+            <parent link="base_bottom"/>
+            <child link="right_first_leg_A"/>
+            <origin rpy="0 0 0" xyz="0.085 0.07 0.03"/>
+        </joint>
+
+    <!--Right first leg B-->
+        <link name = "right_first_leg_B">
+            <visual>
+                <geometry>
+                    <mesh filename="robert_right_leg_b.stl" />
+                </geometry>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="robert_right_leg_b.stl" />
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="0.04"/>
+                <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+        <joint name="right_first_leg_A_to_B" type="revolute">
+            <axis xyz="1 0 0"/>
+            <limit effort="1000.0" velocity="1.0" lower="-1.57" upper="1.57" />
+            <parent link="right_first_leg_A"/>
+            <child link="right_first_leg_B"/>
+            <origin rpy="0 0 0" xyz="0 0.06 -0.035"/>
+        </joint>
+
+    <!--Right first leg C-->
+        <link name = "right_first_leg_C">
+            <visual>
+                <geometry>
+                    <mesh filename="robert_right_leg_c.stl" />
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="robert_right_leg_c.stl" />
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+                
+            </collision>
+            <inertial>
+                <mass value="0.06"/>
+                <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+        <joint name="right_first_leg_B_to_C" type="revolute">
+            <axis xyz="1 0 0"/>
+            <limit effort="1000.0" velocity="1.0" lower="0" upper="3.14" />
+            <parent link="right_first_leg_B"/>
+            <child link="right_first_leg_C"/>
+            <origin rpy="-1.57 0 0" xyz="0 0.08 0"/>
+        </joint>
+
+
+        <!--Right second leg A-->
+        <link name = "right_second_leg_A">
+            <visual>
+                <geometry>
+                    <mesh filename="robert_right_leg_a.stl" />
+                </geometry>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="robert_right_leg_a.stl" />
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="0.12"/>
+                <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+        <joint name="right_second_leg_Base_to_A" type="revolute">
+            <axis xyz="0 0 1"/>
+            <limit effort="1000.0" velocity="1.0" lower="-1.57" upper="1.57" />
+            <parent link="base_bottom"/>
+            <child link="right_second_leg_A"/>
+            <origin rpy="0 0 0" xyz="0 0.07 0.03"/>
+        </joint>
+
+    <!--Right second leg B-->
+        <link name = "right_second_leg_B">
+            <visual>
+                <geometry>
+                    <mesh filename="robert_right_leg_b.stl" />
+                </geometry>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="robert_right_leg_b.stl" />
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="0.04"/>
+                <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+        <joint name="right_second_leg_A_to_B" type="revolute">
+            <axis xyz="1 0 0"/>
+            <limit effort="1000.0" velocity="1.0" lower="-1.57" upper="1.57" />
+            <parent link="right_second_leg_A"/>
+            <child link="right_second_leg_B"/>
+            <origin rpy="0 0 0" xyz="0 0.06 -0.035"/>
+        </joint>
+
+    <!--Right second leg C-->
+        <link name = "right_second_leg_C">
+            <visual>
+                <geometry>
+                    <mesh filename="robert_right_leg_c.stl" />
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="robert_right_leg_c.stl" />
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+            </collision>
+            <inertial>
+                <mass value="0.06"/>
+                <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+        <joint name="right_second_leg_B_to_C" type="revolute">
+            <axis xyz="1 0 0"/>
+            <limit effort="1000.0" velocity="1.0" lower="0" upper="3.14" />
+            <parent link="right_second_leg_B"/>
+            <child link="right_second_leg_C"/>
+            <origin rpy="-1.57 0 0" xyz="0 0.08 0"/>
+        </joint>
+
+
+
+        <!--Right third leg A-->
+        <link name = "right_third_leg_A">
+            <visual>
+                <geometry>
+                    <mesh filename="robert_right_leg_a.stl" />
+                </geometry>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="robert_right_leg_a.stl" />
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="0.12"/>
+                <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+        <joint name="right_third_leg_Base_to_A" type="revolute">
+            <axis xyz="0 0 1"/>
+            <limit effort="1000.0" velocity="1.0" lower="-1.57" upper="1.57" />
+            <parent link="base_bottom"/>
+            <child link="right_third_leg_A"/>
+            <origin rpy="0 0 0" xyz="-0.085 0.07 0.03"/>
+        </joint>
+
+    <!--Right third leg B-->
+        <link name = "right_third_leg_B">
+            <visual>
+                <geometry>
+                    <mesh filename="robert_right_leg_b.stl" />
+                </geometry>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="robert_right_leg_b.stl" />
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="0.04"/>
+                <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+        <joint name="right_third_leg_A_to_B" type="revolute">
+            <axis xyz="1 0 0"/>
+            <limit effort="1000.0" velocity="1.0" lower="-1.57" upper="1.57" />
+            <parent link="right_third_leg_A"/>
+            <child link="right_third_leg_B"/>
+            <origin rpy="0 0 0" xyz="0 0.06 -0.035"/>
+        </joint>
+
+    <!--Right third leg C-->
+        <link name = "right_third_leg_C">
+            <visual>
+                <geometry>
+                    <mesh filename="robert_right_leg_c.stl" />
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="robert_right_leg_c.stl" />
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+            </collision>
+            <inertial>
+                <mass value="0.06"/>
+                <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+        <joint name="right_third_leg_B_to_C" type="revolute">
+            <axis xyz="1 0 0"/>
+            <limit effort="1000.0" velocity="1.0" lower="0" upper="3.14" />
+            <parent link="right_third_leg_B"/>
+            <child link="right_third_leg_C"/>
+            <origin rpy="-1.57 0 0" xyz="0 0.08 0"/>
+        </joint>
+
+    
+    <!--Left first leg A-->
+        <link name = "left_first_leg_A">
+            <visual>
+                <geometry>
+                    <mesh filename="robert_left_leg_a.stl" />
+                </geometry>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="robert_left_leg_a.stl" />
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="0.12"/>
+                <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+        <joint name="left_first_leg_Base_to_A" type="revolute">
+            <axis xyz="0 0 1"/>
+            <limit effort="1000.0" velocity="1.0" lower="-1.57" upper="1.57" />
+            <parent link="base_bottom"/>
+            <child link="left_first_leg_A"/>
+            <origin rpy="0 0 0" xyz="0.085 -0.07 0.03"/>
+        </joint>
+    <!--Left first leg B-->
+        <link name = "left_first_leg_B">
+            <visual>
+                <geometry>
+                    <mesh filename="robert_left_leg_b.stl" />
+                </geometry>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="robert_left_leg_b.stl" />
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="0.04"/>
+                <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+        <joint name="left_first_leg_A_to_B" type="revolute">
+            <axis xyz="1 0 0"/>
+            <limit effort="1000.0" velocity="1.0" lower="-1.57" upper="1.57" />
+            <parent link="left_first_leg_A"/>
+            <child link="left_first_leg_B"/>
+            <origin rpy="0 0 0" xyz="0 -0.06 -0.035"/>
+        </joint>
+    <!--Left first leg C-->
+        <link name = "left_first_leg_C">
+            <visual>
+                <geometry>
+                    <mesh filename="robert_left_leg_c.stl" />
+                </geometry>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="robert_left_leg_c.stl" />
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="0.06"/>
+                <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+        <joint name="left_first_leg_B_to_C" type="revolute">
+            <axis xyz="1 0 0"/>
+            <limit effort="1000.0" velocity="1.0" lower="-3.14" upper="0" />
+            <parent link="left_first_leg_B"/>
+            <child link="left_first_leg_C"/>
+            <origin rpy="1.57 0 0" xyz="0 -0.08 0"/>
+        </joint>
+
+    <!--Left second leg A-->
+    <link name = "left_second_leg_A">
+        <visual>
+            <geometry>
+                    <mesh filename="robert_left_leg_a.stl" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                    <mesh filename="robert_left_leg_a.stl" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.12"/>
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+        </inertial>
+    </link>
+    <joint name="left_second_leg_Base_to_A" type="revolute">
+        <axis xyz="0 0 1"/>
+        <limit effort="1000.0" velocity="1.0" lower="-1.57" upper="1.57" />
+        <parent link="base_bottom"/>
+        <child link="left_second_leg_A"/>
+        <origin rpy="0 0 0" xyz="0 -0.07 0.03"/>
+    </joint>
+<!--Left second leg B-->
+    <link name = "left_second_leg_B">
+        <visual>
+            <geometry>
+                <mesh filename="robert_left_leg_b.stl" />
+            </geometry>
+        </visual>
+        <collision>
+             <geometry>
+                    <mesh filename="robert_left_leg_b.stl" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.04"/>
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+        </inertial>
+    </link>
+    <joint name="left_second_leg_A_to_B" type="revolute">
+        <axis xyz="1 0 0"/>
+        <limit effort="1000.0" velocity="1.0" lower="-1.57" upper="1.57" />
+        <parent link="left_second_leg_A"/>
+        <child link="left_second_leg_B"/>
+        <origin rpy="0 0 0" xyz="0 -0.06 -0.035"/>
+    </joint>
+<!--Left second leg C-->
+    <link name = "left_second_leg_C">
+        <visual>
+            <geometry>
+                <mesh filename="robert_left_leg_c.stl" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="robert_left_leg_c.stl" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.06"/>
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+        </inertial>
+    </link>
+    <joint name="left_second_leg_B_to_C" type="revolute">
+        <axis xyz="1 0 0"/>
+        <limit effort="1000.0" velocity="1.0" lower="-3.14" upper="0" />
+        <parent link="left_second_leg_B"/>
+        <child link="left_second_leg_C"/>
+        <origin rpy="1.57 0 0" xyz="0 -0.08 0"/>
+    </joint>
+
+
+<!--Left third leg A-->
+    <link name = "left_third_leg_A">
+        <visual>
+            <geometry>
+                <mesh filename="robert_left_leg_a.stl" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="robert_left_leg_a.stl" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.12"/>
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+        </inertial>
+    </link>
+    <joint name="left_third_leg_Base_to_A" type="revolute">
+        <axis xyz="0 0 1"/>
+        <limit effort="1000.0" velocity="1.0" lower="-1.57" upper="1.57" />
+        <parent link="base_bottom"/>
+        <child link="left_third_leg_A"/>
+        <origin rpy="0 0 0" xyz="-0.085 -0.07 0.03"/>
+    </joint>
+<!--Left third leg B-->
+    <link name = "left_third_leg_B">
+        <visual>
+            <geometry>
+                <mesh filename="robert_left_leg_b.stl" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="robert_left_leg_b.stl" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.04"/>
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+        </inertial>
+    </link>
+    <joint name="left_third_leg_A_to_B" type="revolute">
+        <axis xyz="1 0 0"/>
+        <limit effort="1000.0" velocity="1.0" lower="-1.57" upper="1.57" />
+        <parent link="left_third_leg_A"/>
+        <child link="left_third_leg_B"/>
+        <origin rpy="0 0 0" xyz="0 -0.06 -0.035"/>
+    </joint>
+<!--Left third leg C-->
+    <link name = "left_third_leg_C">
+        <visual>
+            <geometry>
+                <mesh filename="robert_left_leg_c.stl" />
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="robert_left_leg_c.stl" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.06"/>
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+        </inertial>
+    </link>
+    <joint name="left_third_leg_B_to_C" type="revolute">
+        <axis xyz="1 0 0"/>
+        <limit effort="1000.0" velocity="1.0" lower="-3.14" upper="0" />
+        <parent link="left_third_leg_B"/>
+        <child link="left_third_leg_C"/>
+        <origin rpy="1.57 0 0" xyz="0 -0.08 0"/>
+    </joint>
+
+</robot>
+
+
+

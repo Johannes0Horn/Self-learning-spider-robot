@@ -19,19 +19,19 @@ PyBullet, a Python module for simulating robots and games, was used for the simu
 
 ### Reinforcement Learning
 
-<img align="left" width="300" src="rl1.png">
+<img width="300" src="rl1.png">
 
 At the beginning, the complexity of the simulation was reduced to 2 legs. In addition, only 2 motors were active per leg.
 This version of the simulation was only used with the Q-learning approach and should provide faster results by reducing the complexity. With this simulation the interaction between simulation and AI should be tested: Are actions passed correctly? Are the parameters of the observation correct? etc.
 
 After the interaction between AI and simulation worked and the first positive rewards were achieved, the complexity of the robot was further increased. So now 4 legs with 3 motors each were used.
 
-<img align="left" width="300" src="rl2.gif">
+<img width="300" src="rl2.gif">
 
 In the next simulation version, the robot still had 4 legs with 3 motors each. However, many features of the robot were optimized. For example, a more detailed 3D model, better friction values, optimized action space and new reward functions. The reward function will be discussed in more detail in an extra chapter.
 This version of the simulation was used with Soft Actor Critic networks.
 
-<img align="left" width="300" src="rl3.gif">
+<img  width="300" src="rl3.gif">
 
 
 The final version of the simulation consists of a robot with 6 legs with 3 motors each. To keep the complexity of the whole robot low, the actionspace was further adapted. A single action can now address multiple motors of the robot. This version of the simulation was used exclusively with the final Soft Actor Critic nets.

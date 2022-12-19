@@ -18,7 +18,6 @@ Among other things, a 3D model is needed to simulate the robot. Since no model o
 PyBullet, a Python module for simulating robots and games, was used for the simulation. PyBullet is based on the Bullet physics engine. In addition, the simulation was built to represent an OpenAI gym environment. Machine learning is to be used to train the robot. The goal of the training is for the robot to learn a walking pattern on its own. The recognition of obstacles and subsequent avoidance, adaptation to environmental conditions such as friction and inclination as well as pathfinding were therefore not part of the project. The goal was to find an architecture that quickly delivers the best possible results.
 
 ### Reinforcement Learning
-Credits to Simon Wolf
 
 <img align="left" width="300" src="rl1.png">
 

@@ -33,7 +33,9 @@ This version of the simulation was used with Soft Actor Critic networks.
 
 <img align="left" width="300" src="rl3.gif">
 
+
 The final version of the simulation consists of a robot with 6 legs with 3 motors each. To keep the complexity of the whole robot low, the actionspace was further adapted. A single action can now address multiple motors of the robot. This version of the simulation was used exclusively with the final Soft Actor Critic nets.
+
 
 
 #### challenges
